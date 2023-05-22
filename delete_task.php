@@ -21,6 +21,6 @@ if(empty($task_id)){
     $query->execute([
         'id' => $task_id
     ]);
-    header("Location: index.php");
+    header("Location: /");
     exit;
 }

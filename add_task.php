@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $todolist = [];
 $host = 'devkinsta_db';
 $dbname = 'Exercise_Todo_List_App';
@@ -14,7 +16,7 @@ $database = new PDO(
 $task_name = $_POST['task_name'];
 
 if(empty($task_name)){
-    echo "ERROR";
+    $error = "ERROR";
 }else{
     $sql = 'INSERT INTO todolist (`task`,`completed`) VALUES(:task,:completed)';
     $query = $database->prepare($sql);
@@ -22,6 +24,11 @@ if(empty($task_name)){
         'task' => $task_name,
         'completed' => 0
     ]);
-    header("Location: index.php");
+    header("Location: /");
+    exit;
+}
+if(isset($error)){
+    $_SESSION['error'] = $error;
+    header("Location: /");
     exit;
 }

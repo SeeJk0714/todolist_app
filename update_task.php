@@ -29,6 +29,6 @@ if( empty($task_id)){
         'completed' => $task_completed,
         'id' => $task_id
     ]);
-    header("Location: index.php");
+    header("Location: /");
     exit;
 }

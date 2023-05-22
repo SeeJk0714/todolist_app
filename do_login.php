@@ -1,8 +1,6 @@
 <?php
-    // start a session
     session_start();
 
-    // connect to database (PDO - PHP database Object)
     $todolist = [];
     $host = 'devkinsta_db';
     $dbname = 'Exercise_Todo_List_App';
@@ -20,7 +18,7 @@
 
     // 1. make sure all fields are not empty
     if ( empty($email) || empty($password) ) {
-        echo 'All fields are required';
+        $error = 'All fields are required';
     } else {
         // retrieve the user based on the email provided
         // recipe
@@ -36,20 +34,25 @@
 
         // make sure the email provided is in the database
         if ( empty( $user ) ) {
-            echo "The email provided does not exists";
+            $error = "The email provided does not exists";
         } else {
             // make sure password is correct
             if ( password_verify( $password, $user["password"] ) ) {
                 // if password is valid, set the user session
                 $_SESSION["user"] = $user;
 
-                header("Location: index.php");
+                header("Location: /");
                 exit;
             } else {
                 // if password is incorrect
-                echo "The password provided is not match";
+                $error = "The password provided is not match";
             }
         }
 
+    }
+    if ( isset( $error ) ) {
+        $_SESSION['error'] = $error;
+        header("Location: /login");
+        exit;
     }
     
