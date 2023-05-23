@@ -1,17 +1,6 @@
 <?php
-    session_start();
 
-    $todolist = [];
-    $host = 'devkinsta_db';
-    $dbname = 'Exercise_Todo_List_App';
-    $dbuser = 'root';
-    $dbpassword = 'GObT0SaYlthXkrat';
-
-    $database = new PDO(
-        "mysql:host=$host;dbname=$dbname",
-        $dbuser,
-        $dbpassword
-    );
+    $database = connectToDB();
 
     $email = $_POST["email"];
     $password = $_POST["password"];

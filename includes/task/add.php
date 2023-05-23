@@ -29,6 +29,6 @@ if(empty($task_name)){
 }
 if(isset($error)){
     $_SESSION['error'] = $error;
-    header("Location: /");
+    header("Location: / ");
     exit;
 }
