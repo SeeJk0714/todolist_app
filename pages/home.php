@@ -1,13 +1,11 @@
 <?php
     $todolist = [];
 
-    $database = connectToDB();
+    $db = new DB();
 
     $sql = 'SELECT * FROM todolist';
-    $query = $database->prepare($sql);
-    $query->execute();
-    $todolist = $query->fetchAll();
-
+    $todolist = $db->fetchAll($sql);
+    
   require "parts/header.php";
 ?>
 
