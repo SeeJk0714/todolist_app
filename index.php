@@ -26,7 +26,7 @@ switch ($path){
         break;  
     case 'task/update':
         // require 'includes/task/update.php';
-        $task->update();
+        $task->completed();
         break;  
     case 'task/delete':
         // require 'includes/task/delete.php';

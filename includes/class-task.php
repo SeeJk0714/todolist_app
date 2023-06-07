@@ -34,7 +34,7 @@ class Task
         
     }
 
-    public function update()
+    public function completed()
     {
         // init DB class
         $db = new DB();
